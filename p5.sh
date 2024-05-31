@@ -1,4 +1,4 @@
-setenv target 2_limit
+setenv target 3_conn
 rm -rf tmp
 
 git clone https://github.com/James24029775/tmp.git
