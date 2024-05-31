@@ -18,7 +18,7 @@ void Socks4Server::run()
                 std::string key = socket.remote_endpoint().address().to_string();
                 count[key]++;
 
-                if (count[key] >=3 ){
+                if (count[key] >=5 ){
                     run();
                     return;
                 }
