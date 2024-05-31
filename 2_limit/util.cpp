@@ -132,6 +132,8 @@ void Socks4Handler::readRemote()
         auto readCount = self->_serverSocket.read_some(asio::buffer(self->_server_data), ec);
 
         self->limit += readCount;
+        std::cout << "readCount: " << readCount << std::endl;
+        std::cout << "self->limit: " << self->limit << std::endl;
         if (ec || readCount >= LIMIT) {
             self->_browsorSocket.shutdown(tcp::socket::shutdown_send);
             return;
