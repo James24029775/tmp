@@ -20,6 +20,7 @@ public:
     void run();
 
 private:
+    int connLimit = 0;
     asio::io_context &_context;
     asio::ip::tcp::acceptor _acceptor;
     asio::ip::tcp::socket _socket;

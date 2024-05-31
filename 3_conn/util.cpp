@@ -15,6 +15,12 @@ void Socks4Server::run()
     _acceptor.async_accept(_context, [this](auto ec, tcp::socket socket)
                            {
             if (!ec){
+                if (connLimit >=2)
+                {
+                    socket.close();
+                    return;
+                }
+                connLimit++;
                 // auto ep = socket.remote_endpoint();
                 // std::cout << "ep.address().to_string(): " << ep.address().to_string() << std::endl;
                 // std::cout << "ep.port(): " << ep.port() << std::endl;
@@ -29,7 +35,7 @@ void Socks4Server::run()
                 {
                     _context.notify_fork(asio::io_service::fork_child);
                     std::make_shared<Socks4Handler>(&_context, std::move(socket))->run();
-                    std::cout << "EXIT!!!" << std::endl;
+                    connLimit--;
                 }
                 else 
                 {
