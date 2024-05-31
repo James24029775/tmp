@@ -1,4 +1,4 @@
-setenv target 4_model1
+setenv target 5_model2
 rm -rf tmp
 
 git clone https://github.com/James24029775/tmp.git
