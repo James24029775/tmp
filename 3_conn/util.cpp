@@ -27,9 +27,9 @@ void Socks4Server::run()
                 }
                 else if (pid == 0)
                 {
-                    std::cout << "SHITTTTTTTTT" << std::endl;
                     _context.notify_fork(asio::io_service::fork_child);
                     std::make_shared<Socks4Handler>(&_context, std::move(socket))->run();
+                    std::cout << "EXIT!!!" << std::endl;
                 }
                 else 
                 {
