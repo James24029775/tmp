@@ -18,7 +18,7 @@ void Socks4Server::run()
                 if (connLimit >=2)
                 {
                     socket.close();
-                    return;
+                    run();
                 }
                 connLimit++;
                 // auto ep = socket.remote_endpoint();
