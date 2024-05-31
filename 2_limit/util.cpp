@@ -134,7 +134,7 @@ void Socks4Handler::readRemote()
         self->limit += readCount;
         std::cout << "readCount: " << readCount << std::endl;
         std::cout << "self->limit: " << self->limit << std::endl;
-        if (ec || readCount >= LIMIT) {
+        if (ec || self->limit >= LIMIT) {
             self->_browsorSocket.shutdown(tcp::socket::shutdown_send);
             return;
         }
