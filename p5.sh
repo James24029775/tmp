@@ -1,4 +1,4 @@
-setenv target 3_conn
+setenv target 4_model1
 rm -rf tmp
 
 git clone https://github.com/James24029775/tmp.git
