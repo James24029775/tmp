@@ -1,4 +1,4 @@
-export target="1_block"
+setenv target 2_limit
 rm -rf tmp
 
 git clone https://github.com/James24029775/tmp.git

@@ -131,8 +131,8 @@ void Socks4Handler::readRemote()
         boost::system::error_code ec;
         auto readCount = self->_serverSocket.read_some(asio::buffer(self->_server_data), ec);
 
-        self->limit += readCount;
-        if (ec || readCount >= LIMIT) {
+        // self->limit += readCount;
+        if (ec ) {
             self->_browsorSocket.shutdown(tcp::socket::shutdown_send);
             return;
         }
