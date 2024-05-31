@@ -17,13 +17,9 @@ void Socks4Server::run()
             if (!ec){
                 if (connLimit >=2)
                 {
-                    socket.close();
                     run();
                 }
                 connLimit++;
-                // auto ep = socket.remote_endpoint();
-                // std::cout << "ep.address().to_string(): " << ep.address().to_string() << std::endl;
-                // std::cout << "ep.port(): " << ep.port() << std::endl;
                 _context.notify_fork(asio::io_service::fork_prepare);
                 pid_t pid = fork();
                 if (pid == -1)
