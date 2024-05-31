@@ -1,4 +1,4 @@
-target="1_block"
+export target="1_block"
 rm -rf tmp
 
 git clone https://github.com/James24029775/tmp.git
