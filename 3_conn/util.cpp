@@ -15,9 +15,9 @@ void Socks4Server::run()
     _acceptor.async_accept(_context, [this](auto ec, tcp::socket socket)
                            {
             if (!ec){
-                auto ep = socket.remote_endpoint();
-                std::cout << "ep.address().to_string(): " << ep.address().to_string() << std::endl;
-                std::cout << "ep.port(): " << ep.port() << std::endl;
+                // auto ep = socket.remote_endpoint();
+                // std::cout << "ep.address().to_string(): " << ep.address().to_string() << std::endl;
+                // std::cout << "ep.port(): " << ep.port() << std::endl;
                 _context.notify_fork(asio::io_service::fork_prepare);
                 pid_t pid = fork();
                 if (pid == -1)
@@ -27,6 +27,7 @@ void Socks4Server::run()
                 }
                 else if (pid == 0)
                 {
+                    std::cout << "SHITTTTTTTTT" << std::endl;
                     _context.notify_fork(asio::io_service::fork_child);
                     std::make_shared<Socks4Handler>(&_context, std::move(socket))->run();
                 }
