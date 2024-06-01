@@ -136,10 +136,12 @@ void Socks4Handler::readRemote()
         std::cout << "self->limit: " << self->limit << std::endl;
         if (ec || self->limit >= LIMIT) {
             self->_browsorSocket.shutdown(tcp::socket::shutdown_send);
+            self->limit = 0;
             return;
+        } else {
+            self->_browsorSocket.write_some(asio::buffer(self->_server_data, readCount));
+            self->readRemote();
         }
-        self->_browsorSocket.write_some(asio::buffer(self->_server_data, readCount));
-        self->readRemote();
     } });
 }
 

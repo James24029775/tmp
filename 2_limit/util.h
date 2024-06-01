@@ -12,7 +12,7 @@ using tcp = boost::asio::ip::tcp; // from <boost/asio/ip/tcp.hpp>
 #define BIND 2
 #define ACCEPT 90
 #define REJECT 91
-#define LIMIT 512*1024
+#define LIMIT 530*1024
 
 class Socks4Server : public std::enable_shared_from_this<Socks4Server>
 {
